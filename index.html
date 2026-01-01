@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お申し込みありがとうございます | DRMランチパッケージ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-danger: #CC0000;
+            --color-danger-dark: #990000;
+            --color-black: #1A1A1A;
+            --color-text: #333333;
+            --color-gray: #666666;
+            --color-white: #FFFFFF;
+            --color-bg-light: #F8F8F8;
+            --color-border: #DDDDDD;
+            --color-gold: #D4AF37;
+            --color-warning: #FFF9E6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--color-bg-light);
+            color: var(--color-text);
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1A1A1A 0%, #333333 100%);
+            color: var(--color-white);
+            padding: 50px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        header .check-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--color-gold);
+        }
+
+        header h1 {
+            font-family: 'Archivo Black', 'Noto Sans JP', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: #FFEBEB;
+            border: 3px solid var(--color-danger);
+            border-radius: 5px;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .warning-box h2 {
+            color: var(--color-danger);
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .warning-box p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+
+        .warning-box .deadline {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--color-danger);
+            margin: 20px 0;
+        }
+
+        /* Payment Info Section */
+        .payment-info {
+            background: var(--color-white);
+            border-radius: 5px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-info h3 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--color-black);
+            margin-bottom: 30px;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--color-danger);
+        }
+
+        /* Amount Display */
+        .amount-box {
+            background: var(--color-warning);
+            border: 3px solid var(--color-gold);
+            border-radius: 5px;
+            padding: 25px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .amount-box .label {
+            font-size: 1rem;
+            color: var(--color-gray);
+            margin-bottom: 10px;
+        }
+
+        .amount-box .amount {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--color-danger);
+        }
+
+        .amount-box .note {
+            font-size: 1rem;
+            color: var(--color-gray);
+            margin-top: 10px;
+        }
+
+        /* Bank Info Table */
+        .bank-info {
+            background: var(--color-white);
+            border: 2px solid var(--color-border);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .bank-info-row {
+            display: flex;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .bank-info-row:last-child {
+            border-bottom: none;
+        }
+
+        .bank-info-label {
+            background: var(--color-bg-light);
+            padding: 20px;
+            width: 40%;
+            font-weight: 900;
+            color: var(--color-danger);
+            border-right: 1px solid var(--color-border);
+        }
+
+        .bank-info-value {
+            padding: 20px;
+            width: 60%;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Notice Box */
+        .notice-box {
+            background: var(--color-bg-light);
+            border-left: 5px solid var(--color-danger);
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        .notice-box h4 {
+            color: var(--color-danger);
+            font-size: 1.2rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .notice-box ul {
+            margin-left: 20px;
+        }
+
+        .notice-box li {
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .notice-box strong {
+            color: var(--color-danger);
+        }
+
+        /* Flow Steps */
+        .flow-steps {
+            background: var(--color-white);
+            border-radius: 5px;
+            padding: 40px;
+            margin-top: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .flow-steps h3 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--color-black);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-number {
+            background: var(--color-danger);
+            color: var(--color-white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-right: 20px;
+        }
+
+        .step-content h4 {
+            font-size: 1.1rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--color-black);
+        }
+
+        .step-content p {
+            color: var(--color-text);
+            line-height: 1.8;
+        }
+
+        /* Contact Box */
+        .contact-box {
+            background: var(--color-bg-light);
+            border: 2px solid var(--color-danger);
+            border-radius: 5px;
+            padding: 30px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .contact-box h4 {
+            color: var(--color-danger);
+            font-size: 1.3rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            margin-bottom: 15px;
+        }
+
+        .contact-box .email {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-danger);
+            margin: 20px 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-black);
+            color: var(--color-white);
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: #FF6B6B;
+            text-decoration: underline;
+            margin: 0 15px;
+        }
+
+        footer a:hover {
+            color: var(--color-gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+
+            header {
+                padding: 40px 20px;
+            }
+
+            .payment-info,
+            .flow-steps {
+                padding: 25px 20px;
+            }
+
+            .warning-box {
+                padding: 20px;
+            }
+
+            .warning-box .deadline {
+                font-size: 1.5rem;
+            }
+
+            .amount-box .amount {
+                font-size: 2rem;
+            }
+
+            .bank-info-row {
+                flex-direction: column;
+            }
+
+            .bank-info-label,
+            .bank-info-value {
+                width: 100%;
+                border-right: none;
+            }
+
+            .bank-info-label {
+                padding-bottom: 10px;
+            }
+
+            .bank-info-value {
+                padding-top: 10px;
+            }
+
+            .step {
+                flex-direction: column;
+            }
+
+            .step-number {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="check-icon">✓</div>
+            <h1>お申し込みありがとうございます</h1>
+            <p>お手続きを進めてください</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Warning Box -->
+        <div class="warning-box">
+            <h2>⚠️ 【重要】まだ、手続きは完了しておりません</h2>
+            <p>
+                以下の振込先へ、<span class="deadline">【3営業日以内】</span>に代金のお振込をお願いいたします。
+            </p>
+            <p style="margin-top: 15px;">
+                ご入金の確認が取れ次第、正式にプロジェクト参加確定となります。
+            </p>
+        </div>
+
+        <!-- Payment Info -->
+        <div class="payment-info">
+            <h3>■ お振込金額</h3>
+            
+            <div class="amount-box">
+                <p class="label">お振込金額</p>
+                <p class="amount">¥39,800</p>
+                <p class="note">（税込）</p>
+            </div>
+
+            <h3>■ お振込先</h3>
+            
+            <div class="bank-info">
+                <div class="bank-info-row">
+                    <div class="bank-info-label">銀行名</div>
+                    <div class="bank-info-value">三井住友銀行</div>
+                </div>
+                <div class="bank-info-row">
+                    <div class="bank-info-label">支店名</div>
+                    <div class="bank-info-value">トランクNORTH支店</div>
+                </div>
+                <div class="bank-info-row">
+                    <div class="bank-info-label">種別</div>
+                    <div class="bank-info-value">普通</div>
+                </div>
+                <div class="bank-info-row">
+                    <div class="bank-info-label">口座番号</div>
+                    <div class="bank-info-value">0219039</div>
+                </div>
+                <div class="bank-info-row">
+                    <div class="bank-info-label">口座名義</div>
+                    <div class="bank-info-value"> イージーキカク（ド </div>
+                </div>
+            </div>
+
+            <!-- Notice -->
+            <div class="notice-box">
+                <h4>【ご注意】</h4>
+                <ul>
+                    <li>振込手数料は<strong>お客様のご負担</strong>となります。</li>
+                    <li>振込名義人は<strong>「お申し込み時のお名前」</strong>でお願いいたします。</li>
+                    <li>期限内に確認が取れない場合、<strong>システム上自動キャンセル</strong>となりますのでご注意ください。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Flow Steps -->
+        <div class="flow-steps">
+            <h3>この後の流れ</h3>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>お振込</h4>
+                    <p>上記口座へ3営業日以内にお振込ください。振込名義はお申し込み時のお名前でお願いいたします。</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>入金確認</h4>
+                    <p>ご入金確認後、24時間以内にメールにて「入金確認完了」のご連絡をいたします。</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>ヒアリングシート送付</h4>
+                    <p>入金確認完了メールと同時に「ヒアリングシート」をお送りいたします。必要事項をご記入の上、ご返信ください。</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h4>制作開始</h4>
+                    <p>ヒアリングシートご提出後、原則として14営業日以内にシステム構築および制作物を納品いたします。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Box -->
+        <div class="contact-box">
+            <h4>ご不明な点がございましたら</h4>
+            <p>お気軽にお問い合わせください</p>
+            <p class="email">info@sakimura.info</p>
+            <p style="color: var(--color-gray); font-size: 0.9rem;">
+                ※ 営業時間: 平日 10:00〜18:00（土日祝日を除く）<br>
+                ※ 原則として2営業日以内に返信いたします。
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p style="margin-bottom: 15px;">
+                <a href="https://sakimura-tokushohou.vercel.app/" target="_blank">特定商取引法に基づく表記</a>
+                <a href="https://sakimura-privacy.vercel.app/" target="_blank">プライバシーポリシー</a>
+            </p>
+            <p>&copy; 2026 EZ企画合同会社. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
